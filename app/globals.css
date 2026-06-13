@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+:root {
+  /* Colores Julietas Flowers - Paleta Romántica */
+  --background: #FFFAFA;           /* Blanco rosa suave */
+  --foreground: #1a1a1a;           /* Casi negro */
+  --bg: #FFF5F7;                   /* Fondo rosa muy claro */
+  --bgSecondary: #FFFFFF;          /* Blanco puro */
+  --text: #2D2D2D;                 /* Gris oscuro */
+  --textSecondary: #8B7B8B;        /* Gris marrón suave */
+  
+  /* Colores primarios de marca */
+  --color-rose-primary: #C91E63;   /* Rosa/Magenta - Rosas */
+  --color-rose-light: #E91E63;     /* Rosa más claro */
+  --color-gold-accent: #E0A11A;    /* Dorado - Lujo y detalles */
+  --color-green-foliage: #1ABC9C;  /* Verde follaje */
+  --color-blush: #F5B5D4;          /* Sonrojo delicado */
+  
+  --border: #F0C5D9;               /* Borde rosado */
+  --font-body-family: Helvetica, Arial, sans-serif;
+  --font-body-style: normal;
+  --font-body-weight: 700;
+  --font-body-weight-bold: 1000;
+  --font-heading-family: var(--font-source-serif-4), "Source Serif 4", serif;
+  --font-heading-style: italic;
+  --font-heading-weight: 400;
+  --font-body-scale: 1.0;
+  --font-heading-scale: 1.35;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body-family);
+  --font-serif: var(--font-heading-family);
+  --font-mono: var(--font-body-family);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1A1A1A;
+    --foreground: #FFFAFA;
+    --bg: #2D2D2D;
+    --bgSecondary: #3A3A3A;
+    --text: #F5F5F5;
+    --textSecondary: #D4B5C4;
+    --border: #5A4050;
+    
+    /* Colores primarios en modo oscuro */
+    --color-rose-primary: #E91E63;
+    --color-rose-light: #FF1493;
+    --color-gold-accent: #FFB81C;
+    --color-green-foliage: #26D6C2;
+    --color-blush: #C2648E;
+  }
+}
+
+/* Dark class selector (para manual toggle) */
+.dark {
+  --background: #1A1A1A;
+  --foreground: #FFFAFA;
+  --bg: #2D2D2D;
+  --bgSecondary: #3A3A3A;
+  --text: #F5F5F5;
+  --textSecondary: #D4B5C4;
+  --border: #5A4050;
+  --galleryImgBg: #2D2D2D;
+  
+  --color-rose-primary: #E91E63;
+  --color-rose-light: #FF1493;
+  --color-gold-accent: #FFB81C;
+  --color-green-foliage: #26D6C2;
+  --color-blush: #C2648E;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+  font-size: calc(1rem * var(--font-body-scale));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading,
+.font-heading-xl {
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+}
+
+strong,
+b,
+.font-body-bold {
+  font-weight: var(--font-body-weight-bold);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Animación 3D de rotación para skeletons */
+.skeleton-3d {
+  animation: skeleton-3d-rotate 1.2s cubic-bezier(0.4,0.2,0.2,1) infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes skeleton-3d-rotate {
+  0% {
+    transform: perspective(600px) rotateY(-8deg) scale(0.98);
+    opacity: 0.7;
+  }
+  50% {
+    transform: perspective(600px) rotateY(8deg) scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(600px) rotateY(-8deg) scale(0.98);
+    opacity: 0.7;
+  }
+}
+
+
+@keyframes loadingSteps {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  33% {
+    clip-path: inset(0 66% 0 0);
+  }
+
+  66% {
+    clip-path: inset(0 33% 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-loadingSteps {
+  animation: loadingSteps 0.9s steps(4) infinite;
+}
